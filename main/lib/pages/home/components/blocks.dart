@@ -109,6 +109,20 @@ class _BlocksState extends State<Blocks> {
 
 List<Widget> getGrids (double base, List<List<double>> list) {
   List<Widget> newList = [];
+  Map colorMap = {
+    "": Colors.transparent,
+    "2": Colors.white,
+    "4": Colors.yellow,
+    "8": Colors.orangeAccent,
+    "16": Colors.orange,
+    "32": Colors.redAccent,
+    "64": Colors.pinkAccent,
+    "128": Colors.pink,
+    "256": Colors.tealAccent,
+    "512": Colors.teal,
+    "1024": Colors.blueAccent,
+    "2048": Colors.blue
+  };
   list.forEach((item) => {
     item.forEach((element) {
       String value = '';
@@ -120,7 +134,7 @@ List<Widget> getGrids (double base, List<List<double>> list) {
         height: base,
         alignment: Alignment.center,
         child: Text('$value'),
-        decoration: BoxDecoration(color: Colors.yellow, border: Border.all(width: 1, color: Colors.yellowAccent)),
+        decoration: BoxDecoration(color: colorMap[value], border: Border.all(width: 1, color: Colors.yellowAccent)),
       ));
     })
   });

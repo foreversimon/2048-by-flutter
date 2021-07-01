@@ -14,7 +14,7 @@ class _BackgroundState extends State<Background> {
     return Container(
       width: getSize(widget.grid, widget.base),
       height: getSize(widget.grid, widget.base),
-      decoration: BoxDecoration(color: Colors.yellow)
+      decoration: BoxDecoration(color: Color.fromRGBO(255, 255, 204, 1))
     );
   }
 }
