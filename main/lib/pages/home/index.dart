@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './components/background.dart';
+import './components//blocks.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -7,6 +8,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  double grid = 4;
+  double base = 90;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,10 +17,10 @@ class _HomePageState extends State<HomePage> {
         title: Text('2048'),
         backgroundColor: Colors.blue,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: centerChildren([
-          Background(grid: 4)
+          Background(grid: grid, base: base),
+          Blocks(grid: grid, base: base)
         ])
       ),
     );
