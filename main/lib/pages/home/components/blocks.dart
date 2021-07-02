@@ -84,7 +84,8 @@ class _BlocksState extends State<Blocks> {
             print(direction);
             setState(() {
               try {
-                map = changeMap(origin: map, direction: direction);
+                List<List<double>> list = changeMap(origin: map, direction: direction).list;
+                map = list;
               } catch (e) {
                 Fluttertoast.showToast(
                   msg: "Game over",
@@ -145,7 +146,19 @@ double getSize (double grid, double base) {
   return grid * base;
 }
 
-List<List<double>> changeMap ({required List<List<double>> origin, required String direction}) {
+class Trans {
+  List<double> start;
+  List<double> end;
+  Trans ({required this.start, required this.end});
+}
+
+class MapObj {
+  List<List<double>> list;
+  List<Trans> trans;
+  MapObj({required this.list, required this.trans});
+}
+
+MapObj changeMap ({required List<List<double>> origin, required String direction}) {
   List<List<double>> list = [];
   origin.forEach((element) {
     List<double> tmpList = [];
@@ -229,5 +242,5 @@ List<List<double>> changeMap ({required List<List<double>> origin, required Stri
   }
   List<int> randomData = random();
   list[randomData[0]][randomData[1]] = 2;
-  return list;
+  return MapObj(list: list, trans: []);
 }
